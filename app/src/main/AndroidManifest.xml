@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.user.myapplication_pethospital">
+
+    <uses-permission android:name="android.permission.INTERNET"  />
+    <uses-permission android:name="android.permission.VIBRATE"  />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".WelcomeActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity_Pet_Hospital">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Specific_area" />
+        <activity android:name=".All_comment" />
+        <activity android:name=".You_comment" />
+        <activity android:name=".Contact_hospital" />
+        <activity android:name=".Specific_area_Bali" />
+        <activity android:name=".Specific_area_Wugu" />
+        <activity android:name=".Specific_area_Tamsui" />
+        <activity android:name=".WuguActivity" />
+        <activity android:name=".Bali_One" />
+        <activity android:name=".Bali_Two" />
+        <activity android:name=".Wugu_One" />
+        <activity android:name=".Wugu_Two" />
+        <activity android:name=".TamsuiActivity" />
+        <activity android:name=".Tamsui_One" />
+        <activity android:name=".Tamsui_Two" />
+        <activity android:name=".Tamsui_Three"></activity>
+    </application>
+
+</manifest>

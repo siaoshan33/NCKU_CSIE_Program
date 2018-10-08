@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.user.myapplication_pethospital.Specific_area">
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textView111"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="109dp"
+            android:layout_weight="0.21"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView_City"
+                android:layout_width="wrap_content"
+                android:layout_height="93dp"
+                android:layout_weight="0.64"
+                android:text="@string/textView_Cit" />
+
+            <TextView
+                android:id="@+id/textView_Area"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:text="@string/textView_A" />
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="232dp"
+            android:weightSum="1">
+
+            <RadioButton
+                android:id="@+id/radioButton_B1"
+                android:layout_width="218dp"
+                android:layout_height="50dp"
+                android:text="@string/radioButton_Bali1" />
+
+            <RadioButton
+                android:id="@+id/radioButton_B2"
+                android:layout_width="218dp"
+                android:layout_height="63dp"
+                android:text="@string/radioButton_Bali2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/Return_Main"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Return_M" />
+
+        <Button
+            android:id="@+id/button_enter_B"
+            android:layout_width="151dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_Be" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
