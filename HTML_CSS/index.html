@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style type="text/css">
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main_h {
+			position: fixed;
+			top: 0px;
+			max-height: 70px;
+			z-index: 999;
+			width: 100%;
+			padding-top: 17px;
+			background: none;
+			overflow: hidden;
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
+			opacity: 0;
+			top: -100px;
+			padding-bottom: 6px;
+			font-family: "Montserrat", sans-serif;
+		}
+		@media only screen and (max-width: 766px) {
+			.main_h {
+				padding-top: 30px;
+			}
+		}
+
+		.open-nav {
+		  max-height: 400px !important;
+		}
+		.open-nav .mobile-toggle {
+		  transform: rotate(-90deg);
+		  -webkit-transform: rotate(-90deg);
+		}
+
+		.sticky {
+		  background-color: rgba(255, 255, 255, 0.93);
+		  opacity: 1;
+		  top: 0px;
+		  border-bottom: 1px solid gainsboro;
+		}
+
+		.logo {
+		  font-size: 25px;
+		  color: #8f8f8f;
+		  text-transform: uppercase;
+		  float: left;
+		  display: block;
+		  margin-top: 0;
+		  line-height: 1;
+		  margin-bottom: 10px;
+		}
+		@media only screen and (max-width: 766px) {
+		  .logo {
+		    float: none;
+		  }
+		}
+
+		nav {
+		  float: middle;
+		  width: 100%;
+		}
+		@media only screen and (max-width: 766px) {
+		  nav {
+		    width: 100%;
+		  }
+		}
+		nav ul {
+		  list-style: none;
+		  overflow: hidden;
+		  text-align: middle;
+		  float: middle;
+		}
+		@media only screen and (max-width: 766px) {
+		  nav ul {
+		    padding-top: 10px;
+		    margin-bottom: 22px;
+		    float: left;
+		    text-align: center;
+		    width: 100%;
+		  }
+		}
+		nav ul li {
+		  display: inline-block;
+		  margin-left: 35px;
+		  line-height: 2.0;
+		}
+		@media only screen and (max-width: 766px) {
+		  nav ul li {
+		    width: 100%;
+		    padding: 7px 0;
+		    margin: 0;
+		  }
+		}
+		nav ul a {
+		  color: #444444;
+		  text-transform: uppercase;
+		  font-size: 13px;
+		}
+
+		.mobile-toggle {
+		  display: none;
+		  cursor: pointer;
+		  font-size: 20px;
+		  position: absolute;
+		  right: 22px;
+		  top: 0;
+		  width: 30px;
+		  -webkit-transition: all 200ms ease-in;
+		  -moz-transition: all 200ms ease-in;
+		  transition: all 200ms ease-in;
+		}
+		@media only screen and (max-width: 766px) {
+		  .mobile-toggle {
+		    display: block;
+		  }
+		}
+		.mobile-toggle span {
+		  width: 30px;
+		  height: 4px;
+		  margin-bottom: 6px;
+		  border-radius: 1000px;
+		  background: #8f8f8f;
+		  display: block;
+		}
+
+		.row {
+		  width: 100%;
+		  max-width: 940px;
+		  margin: 0 auto;
+		  position: relative;
+		  padding: 0 2%;
+		}
+
+		* {
+		  box-sizing: border-box;
+		}
+
+		body {
+		  color: #8f8f8f;
+		  background: white;
+		  font-family: "Cardo", serif;
+		  font-weight: 300;
+		  -webkit-font-smoothing: antialiased;
+		}
+
+		a {
+		  text-decoration: none;
+		}
+
+		h1 {
+		  font-size: 30px;
+		  line-height: 1.8;
+		  text-transform: uppercase;
+		  font-family: "Montserrat", sans-serif;
+		}
+
+		p {
+		  margin-bottom: 20px;
+		  font-size: 17px;
+		  line-height: 2;
+		}
+
+		.content {
+		  padding: 50px 2% 250px;
+		}
+
+		.hero {
+		  position: relative;
+		  
+		
+		  -webkit-background-size: cover;
+		  -moz-background-size: cover;
+		  background-size: cover;
+		  text-align: center;
+		  color: #fff;
+		  padding-top: 110px;
+		  height: 100vh;
+		  width: 100vw;
+		  letter-spacing: 2px;
+		  font-family: "Montserrat", sans-serif;
+		}
+		.hero h1 {
+		  font-size: 50px;
+		  line-height: 1.3;
+		}
+		.hero h1 span {
+		  font-size: 25px;
+		  color: #e8f380;
+		  border-bottom: 2px solid #e8f380;
+		  padding-bottom: 12px;
+		  line-height: 3;
+		}
+
+		.mouse {
+		  display: block;
+		  margin: 0 auto;
+		  width: 26px;
+		  height: 46px;
+		  border-radius: 13px;
+		  border: 2px solid #e8f380;
+		  position: absolute;
+		  bottom: 40px;
+		  position: absolute;
+		  left: 50%;
+		  margin-left: -26px;
+		}
+
+		@-webkit-keyframes scroll {
+		  0% {
+		    opacity: 1;
+		    -webkit-transform: translateY(0);
+		    transform: translateY(0);
+		  }
+
+		  100% {
+		    opacity: 0;
+		    -webkit-transform: translateY(20px);
+		    transform: translateY(20px);
+		  }
+		}
+		@keyframes scroll {
+		  0% {
+		    opacity: 1;
+		    -webkit-transform: translateY(0);
+		    -ms-transform: translateY(0);
+		    transform: translateY(0);
+		  }
+
+		  100% {
+		    opacity: 0;
+		    -webkit-transform: translateY(20px);
+		    -ms-transform: translateY(20px);
+		    transform: translateY(20px);
+		  }
+		}
+
+        #navPAGE_Pos {
+            display: inline-block;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            max-height: 80%;
+            margin: auto 0;
+            z-index: 991;
+        }
+
+        #navPAGE_PosInner {
+            display: inline-block;
+            vertical-align: middle;
+            width: 90%;
+        }
+
+        #navPAGE {
+            position: relative;
+        }
+
+        ul{
+        	list-style: none;
+        	list-style-image: none; 
+        	margin: 0;
+        }
+
+        .fontSTYLE1{ 
+        	font-family: 'Century Gothic', 'PingFang TC', 'MHei', 'STHeitiTC-Light', '微軟正黑體', 'Microsoft JhengHei' , Arial, sans-serif ;  
+        }
+        .fontSTYLE2{ 
+        	font-family: 'Myriad Pro', 'PingFang TC', 'MHei', 'STHeitiTC-Light', '微軟正黑體', 'Microsoft JhengHei' , Arial, sans-serif ;  
+        }
+
+        #navPAGE li b:after {
+            content: '';
+            width: 13px;
+            height: 1px;
+            display: inline-block;
+            vertical-align: middle;
+            background: #808080;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            margin: auto 0;
+            opacity: 1;
+        }
+
+        li {
+            display: list-item;
+            text-align: -webkit-match-parent;
+        }
+
+        #navPAGE li {
+            font-size: .875rem;
+            padding: 8px 0;
+        }
+
+
+        #navPAGE li.current i {
+            background: #eee; 
+        }
+
+        #navPAGE li i{
+        	content: '';
+        	width: 13px;
+        	height: 3px;
+        	display: inline-block;
+        	vertical-align: middle;
+        	margin-right: 10px;
+        	background: rgba(255,255,255,0,00);  
+
+        }
+
+        a:-webkit-any-link {
+            color: -webkit-link;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        i, cite, em, var, address, dfn {
+            font-style: italic;
+        }
+
+        #navPAGE li b{
+        	
+        	display: inline-block;
+        	vertical-align: middle;
+        	/*position: relative;*/
+        	color: white;
+
+        }
+        
+        #navPAGE li.current b {
+            background: #fff; 
+        }
+
+
+        b, strong {
+            font-weight: bold;
+        }
+
+        #navPAGE li span{
+        	display: none;
+        }
+
+
+        #IND1 {
+        	background-image: url(IND_1.gif);
+        	-moz-background-size: 100vw 100vh;        /*for Firefox*/
+			-webkit-background-size: 100vw 100vh;        /*for Google Chrome、Safari*/
+			-o-background-size: 100vw 100vh;        /*for Opera*/
+			background-size: 100vw 100vh;        /*for IE*/
+        	
+		    position: relative;
+		    width: 100vw;
+		  
+		    height: 100vh;
+		    z-index: 0;
+		}
+
+        #IND2 {
+		    background-image: url(02膠捲_3.jpg);
+		    -moz-background-size: 95vw 95vh;        /*for Firefox*/
+			-webkit-background-size: 95vw 95vh;        /*for Google Chrome、Safari*/
+			-o-background-size: 95vw 95vh;        /*for Opera*/
+			background-size: 95vw 95vh;        /*for IE*/
+		    text-align: center;
+		    height: 100vh;
+		    position: relative;
+
+		}
+
+		#IND3 {
+
+			background-image: url(INDEX3.jpg);
+		    -moz-background-size: 100vw 180vh;        /*for Firefox*/
+			-webkit-background-size: 100vw 180vh;        /*for Google Chrome、Safari*/
+			-o-background-size: 100vw 180vh;        /*for Opera*/
+			background-size: 100vw 180vh;        /*for IE*/
+		    text-align: center;
+		    height: 88.5vh;
+		    /*padding: 120px 0;*/
+		    position: relative;
+		}
+
+		#IND4 {
+		    background-image: url(INDEX4_2.png);
+		    -moz-background-size: 100vw 88.5vh;        /*for Firefox*/
+			-webkit-background-size: 100vw 88.5vh;        /*for Google Chrome、Safari*/
+			-o-background-size: 100vw 88.5vh;        /*for Opera*/
+			background-size: 100vw 88.5vh;        /*for IE*/
+
+		    text-align: center;
+		    height: 90vh;
+		    position: relative;
+		}
+
+		#IND5 {
+		    background-image: url(INDEX5.jpg);
+		    -moz-background-size: 100vw 230vh;        /*for Firefox*/
+			-webkit-background-size: 100vw 230vh;        /*for Google Chrome、Safari*/
+			-o-background-size: 100vw 230vh;        /*for Opera*/
+			background-size: 100vw 230vh;        /*for IE*/
+		    text-align: center;
+		    height: 180vh;
+		    /*padding: 120px 0;*/
+		    opacity: 0.9;
+		    position: relative;
+		}
+
+		#IND6 {
+		    background-image: url(INDEX6.jpg);
+		    -moz-background-size: 100vw 280vh;        /*for Firefox*/
+			-webkit-background-size: 100vw 280vh;        /*for Google Chrome、Safari*/
+			-o-background-size: 100vw 280vh;        /*for Opera*/
+			background-size: 100vw 280vh;        /*for IE*/
+		    text-align: center;
+		    height: 255vh;
+		    /*padding: 120px 0;*/
+		    opacity: 0.95;
+		    position: relative;
+		}
+
+		#IND7 {
+		    background: #f4f4f4;
+		    text-align: center;
+		    height: 88.5vh;
+		    position: relative;
+		    overflow: hidden;
+		}
+
+		#FOOTER {
+		    background: #ffffff;
+		    text-align: center;
+		    height: 0vh;
+		    position: relative;
+		}
+
+		.txtUPPERCASE {
+		    text-transform: uppercase;
+		}
+
+
+/* footer _ (start)　*/
+		footer h2 {
+		    font-size: 2.1rem;
+		    line-height: 1.3em;
+		    margin: 1em auto;
+		}
+
+		
+
+		h2 {
+			display: block;
+			font-size: 1.5em;
+			-webkit-margin-before: 0.83em;
+			-webkit-margin-after: 0.83em;
+			-webkit-margin-start: 0px;
+			-webkit-margin-end: 0px;
+			font-weight: bold;
+
+		}
+
+		.aaBorder { 
+			padding: 12px 1em; 
+			position:relative; 
+			z-index:1; 
+			display: inline-block; 
+			margin: 2em 0; 
+			border: solid 1px #000; 
+			min-width: 170px; 
+			cursor: pointer; 
+		}
+
+		.aaBorder::before, .aaBorder::after { 
+			content:''; 
+			position: 
+			absolute; 
+			bottom:0; 
+			left: 0; 
+			width: 100%; 
+			height: 0%; 
+			z-index: -1; 
+			display: block; 
+			background:  #000; 
+			transform: translateZ(0); 
+			transition: all .6s; 
+			pointer-events: none; 
+			opacity: 0; 
+		}
+		.aaBorder::before { 
+			top:0; 
+		}
+		.aaBorder::after { 
+			bottom:0; 
+		}
+		.aaBorder:hover::before,.aaBorder:hover::after { 
+			height: 100%; 
+			opacity: 1;  
+		}
+		.aaBorder:hover { 
+			color: #fff; 
+			transition-delay: .1s;  
+		}
+
+		.f12 {
+			font-size:  .75rem; 
+		}
+
+		.aaSocial { 
+			width: 40px; 
+			margin: 0 1%; 
+			font-size: 1.4rem; 
+			display:inline-block; 
+			vertical-align:middle;    
+		}
+		.aaSocial.fb:hover{ color: #3B5998}
+		.aaSocial.yb:hover{ color: #cc181e; }
+		.aaSocial.tw:hover{ color: #00aced; }
+		.aaSocial.pin:hover{ color: #bd081c;}
+		.aaSocial.ig:hover{ color: #9b6954; }
+		.aaSocial.pin{ font-size: 1.85rem; }
+
+		[class^="icon-"], [class*=" icon-"] {
+			  /* use !important to prevent issues with browser extensions that change fonts */
+			  font-family: 'icomoon' !important;
+			  speak: none;
+			  font-style: normal;
+			  font-weight: normal;
+			  font-variant: normal;
+			  text-transform: none;
+			  line-height: 1;
+
+			  /* Better Font Rendering =========== */
+			  -webkit-font-smoothing: antialiased;
+			  -moz-osx-font-smoothing: grayscale;
+		}
+
+		i, cite, em, var, address, dfn {
+			font-style: italic;
+		}
+
+/* footer _ (end)　*/
+
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 10px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+        }
+
+
+        #header_INDEX2 {
+            position: absolute;
+            background-color: black;
+            top: 0vh;
+            left: 0;
+            width: 100%;
+            max-width: 100%;
+            padding: 30px 0;
+            z-index: 990;
+            display: block;
+            font-family: "標楷體";
+            font-size: 25px;
+        }
+
+
+
+/* index02 _  (start)*/ 
+
+        .attributeslist {
+
+			margin-left: 17.5vw;
+			margin-right: 17.5vw;
+			margin-top: 8vh;
+			width: 65vw;
+			height: 70vh;
+			position: absolute;
+			z-index: 2;
+		}
+		
+		.attributes {
+
+			height: 50vh;
+			background-color: #EEE;
+			overflow: hidden;
+			float: left;
+			margin: 30vh 5vw;
+			position: relative;
+
+		}
+		.attributes_con {
+
+			width: 25vw;
+			float: left;
+			-webkit-transition: margin-top .5s ease-out;
+			-moz-transition: margin-top .5s ease-out;
+			-o-transition: margin-top .5s ease-out;
+
+		}
+
+		.attributes_con:hover {
+
+			margin-top: -40vh;
+
+		}
+
+		.attributes_info1, 
+		.attributes_info2 {
+
+			background-color: #EEE;
+			text-align: center;
+			background-image: url(02膠捲_3_1.jpg);
+
+
+		}
+		.attributes_info2 a {
+
+			box-shadow: 0 0 5px #999;
+			text-decoration: none;
+			padding: 0px;
+			text-align: center;
+			margin-left: 8vw;
+			display: block;
+			color: 	#000000;
+			background-color: #D2691E;
+			border-radius: 3px;
+			line-height: 0vh;
+			font-family: Microsoft JhengHei;
+			width: 7.5vw;
+			height: 20vh;
+		}
+		.attributes_info2 a:hover {
+
+			box-shadow: 0 0 5px #666;
+			background-color: #6BF;
+		}
+
+		.pic {
+
+			height: 43vh;
+			width: 20vw;
+		}
+
+		.attributes_title {
+
+			width: 25vw;
+			height: 0vh;
+			line-height: 0vh;
+			text-align: center;
+		}
+
+		.attributes_title p
+		{
+
+			margin: 8px;
+			font-family: "標楷體" , Helvetica, sans-serif;
+		}
+
+		.intro {
+
+			margin: 8px;
+			font-family: monospace , Helvetica, sans-serif;
+
+		}
+
+		.intro {
+
+			height: 34vh;
+			width: 15.5vw;
+			font-size: 15px;
+			color: #444444;
+			margin-left: 5vw;
+			margin-right: 1vw;
+			margin-top: 6vh;
+		
+		}
+
+
+/* index02 _  (end)*/
+
+
+	/* index03 _ small img to big img (start)*/ 
+
+        #IND3 .slides li p {
+
+            height:100px; 
+            line-height:14px; 
+            color: black;
+            text-align:left;
+            font-size:18px;
+            font-family: "標楷體";
+            position: absolute;
+        }
+
+        #IND3 .slides li img {
+
+            width: 40vw; 
+            height: 64vh;
+            position: relative;
+        }
+
+
+        .small_img,.big_img {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .big_img { 
+
+            display: none; 
+            position: relative;
+            width: 70vw;
+            height: 60vh;
+            left: 15vw;
+            z-index:1002; 
+            overflow: auto; 
+        }
+        
+        .black_overlay{ 
+
+            display: none; 
+            position: absolute; 
+            top: 0%; 
+            left: 0%; 
+            width: 100vw; 
+            height: 100vh; 
+            background-color: black; 
+            z-index:1001; 
+            -moz-opacity: 0.8; 
+            opacity:.80; 
+            filter: alpha(opacity=80);  
+        }
+
+    /* index03 _ small img to big img (end)*/ 
+
+
+/* index05 _  (start)*/
+
+    	@media screen and (max-width: 768px)
+        .storyCon {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 60px;
+        }
+
+        @media screen and (max-width: 1024px)
+        .storyCon {
+            width: 1000px;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .storyCon {
+            width: 1200px;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        div {
+            display: block;
+        }
+
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        a:-webkit-any-link {
+            color: -webkit-link;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px)
+        .storyCon .stConArea {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 100%;
+        }
+
+        @media screen and (max-width: 1024px)
+        .storyCon .stConArea {
+            width: 100%;
+            margin-top: 50px;
+            height: 320px;
+            margin-bottom: 30px;
+        }
+
+        .storyCon .stConArea {
+            width: 1200px;
+            height: 480px;
+            position: relative;
+            margin-top: 50px;
+            margin-bottom: 100px;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 768px)
+        .storyCon .stConArea #L {
+            width: 100%;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+            position: static;
+            z-index: 10;
+        }
+
+        @media screen and (max-width: 1024px)
+        .storyCon .stConArea #L {
+            width: 500px;
+            height: auto;
+            margin-right: 25px;
+        }
+
+        .storyCon .stConArea #L {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            width: 760px;
+            height: auto;
+            left: auto;
+        }
+
+        @media screen and (max-width: 768px)
+        .storyCon .stConArea .stInf {
+            width: 85%;
+            margin-top: -60px;
+            left: auto;
+            right: auto;
+            margin-right: auto;
+            margin-left: auto;
+            z-index: 10;
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 20px;
+            height: 300px;
+            padding-bottom: 20px;
+            height: auto !important;
+            height: 250px;
+            min-height: 200px;
+            overflow: hidden;
+        }
+
+        @media screen and (max-width: 1024px)
+        .storyCon .stConArea .stInf {
+            width: 50%;
+            height: 240px;
+            margin-top: 25px;
+            margin-left: 25px;
+        }
+
+        .storyCon .stConArea .stInf {
+            width: 600px;
+            height: 360px;
+            background-color: #FFFFFF;
+            z-index: 10;
+            margin-top: 40px;
+            left: 0px;
+            right: auto;
+            position: absolute;
+        }
+
+        @media screen and (max-width: 1024px)
+        .storyCon h5 {
+            height: auto;
+            padding-left: 30px;
+            margin-top: 20px;
+            top: auto;
+            width: 30%;
+            float: left;
+        }
+
+        .storyCon h5 {
+            font-size: 2em;
+            color: #545454;
+            float: left;
+            width: 270px;
+            display: block;
+            padding-left: 30px;
+            margin-top: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            -webkit-appearance: none;
+        }
+
+        .storyCon h5 {
+            font-size: 2em;
+            color: #AA2225;
+            float: left;
+            width: 500px;
+            display: block;
+            padding-left: 30px;
+            margin-top: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            -webkit-appearance: none;
+            font-family: "標楷體";
+        }
+
+        @media screen and (max-width: 768px)
+        .storyCon h6 {
+            width: 50%;
+            height: auto;
+            margin-top: 20px;
+            float: right;
+            color: #545454;
+            text-decoration: none;
+            text-align: right;
+        }
+
+        @media screen and (max-width: 1024px)
+        .storyCon h6 {
+            height: auto;
+            padding-right: 30px;
+            float: right;
+            display: block;
+            width: 40%;
+            margin-top: 20px;
+        }
+
+        .storyCon h6 {
+            font-size: 1em;
+            color: #545454;
+            float: left;
+            width: 270px;
+            display: block;
+            margin-top: 50px;
+            text-align: right;
+            padding-right: 30px;
+            text-decoration: none;
+            padding-top: 5px;
+        }
+
+        h6 {
+            display: block;
+            font-size: 0.67em;
+            -webkit-margin-before: 2.33em;
+            -webkit-margin-after: 2.33em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 768px)
+        .storyCon h3 {
+            font-size: 1.3em;
+            margin-top: 30px;
+            width: 100%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        @media screen and (max-width: 1024px)
+        .storyCon h3 {
+            font-size: 1.3em;
+            margin-top: 30px;
+            width: 85%;
+        }
+
+        .storyCon h3 {
+            font-size: 1.5em;
+            color: #AA2225;
+            float: left;
+            width: 560px;
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-top: 50px;
+        }
+
+        h3 {
+            display: block;
+            font-size: 1.17em;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 768px)
+        .storyCon p {
+            width: 95%;
+            padding-left: 0px;
+            margin-right: auto;
+            margin-left: auto;
+            padding-right: 0px;
+            padding-bottom: 20px;
+        }
+
+        @media screen and (max-width: 1024px)
+        .storyCon p {
+            width: 85%;
+            height: 100%;
+        }
+
+        .storyCon p {
+            font-size: 1.1em;
+            color: #444444;
+            float: left;
+            width: 80%;
+            padding-left: 45px;
+            padding-right: 10px;
+            margin-top: 7vh;
+            line-height: 1.5em;
+            font-family: '標楷體';
+        }
+
+        .storyCon p {
+            display: block;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+        }
+
+        /* */
+
+		.flower-show{
+			position: absolute;
+			z-index: 0;
+		}
+		.flower-show:hover{
+			z-index: 50;
+			position: absolute;
+		}
+		.flower-show span{
+			position: absolute;
+			background-color: green;
+			width: 39vw;
+			height: 34vh;
+			padding: 5px;
+			margin-left: -5vw;
+			margin-top: 10vh;
+			border: 1px dashed gray;
+			color: black;
+			text-decoration: none;
+		}
+		.flower-show span img{
+			border-width: 0;
+			padding: 2px;
+		}
+		.flower-show:hover span{
+			visibility: visible;
+			z-index: 999;
+		}
+
+
+/* index05 _  (end)*/
+
+
+
+	/* index07 _  (start)*/
+
+		.slides {
+			background-image: url(INDEX7.jpg);
+
+			-moz-background-size: 100vw 140vh;        /*for Firefox*/
+			-webkit-background-size: 100vw 140vh;        /*for Google Chrome、Safari*/
+			-o-background-size: 100vw 140vh;        /*for Opera*/
+			background-size: 100vw 140vh;        /*for IE*/
+			position: absolute;
+            display: block;
+			margin: 0 auto;
+			max-width: 90vw;
+			max-height: 79vh;
+			font-size: 0;
+		}
+
+		.slides .team_intro {
+
+			display: inline-block;
+			height: 80vh;
+			text-align: center;
+
+		}
+
+		.slides .white, .slides .team_review {
+
+			display: inline-block;
+			height: 20vh;
+			text-align: left;
+
+            margin-top: 3vh;
+
+		}
+
+		 .team_intro{
+            max-width: 25vw;
+            margin-left: 0vw;
+            margin-left: 5vw;
+            display: block;
+		}
+
+		.team_intro img {
+            position: relative;
+            height: 40vh;
+            margin-top: 10vh;
+    		border-radius: 10%;
+    		display: block;
+		}
+
+		.team_intro p {
+            position: relative;
+		    text-align: middle;
+		    padding-top: 15px;
+		    display: block;
+		    display: block;
+		    color: white;
+		    font-family: "標楷體" , Helvetica, sans-serif;
+		}
+
+		.team_review {
+            max-width: 40vw;
+            display: block;
+		}
+		.team_review p {
+
+            position: relative;
+		    text-align: left;
+		    display: block;
+		    color: white;
+		    font-family: "標楷體" , Helvetica, sans-serif;
+
+		}
+
+
+		.flexslider{
+			margin-bottom:5px;
+		}
+
+
+	/* index07 _  (end)*/
+
+ 
+    </style>
+    
+</head>
+
+<body>
+
+
+	<button onclick="topFunction()" id="myBtn" title="Top">
+		<img src="LOGO_Main_3.jpg" style="width: 8vw; height: 13vh; top: 0.5vh; border-radius: 50%;">
+	</button>
+
+
+	<link href='https://fonts.googleapis.com/css?family=Montserrat|Cardo' rel='stylesheet' type='text/css'>
+	<link href='style.css' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+
+	  
+	<header class="main_h">
+
+		<div class="row">
+		    <a class="logo" href="#"><img src="Big_LOGO.png" style="width: 12vw; height: 7vh;"></a>
+
+		    <nav>
+		        <ul>
+		            <li><a href="#IND2"><p style="font-family: 標楷體; font-size: 16px;"><b>【淡水歷史】</b></p></a></li>
+		            <li><a href="#IND3"><p style="font-family: 標楷體; font-size: 16px;"><b>【景點&美食】</b></p></a></li>
+		            <li><a href="#IND4"><p style="font-family: 標楷體; font-size: 16px;"><b>【推薦路線】</b></p></a></li>
+		            <li><a href="#IND7"><p style="font-family: 標楷體; font-size: 16px;"><b>【淡水雙姬】</b></p></a></li>
+		            <li><a href="#FOOTER"><p style="font-family: 標楷體; font-size: 16px;"><b>【聯絡我們】</b></p></a></li>
+
+		        </ul>
+		    </nav>
+
+		</div>
+
+	</header>
+
+    <section id="IND1">
+
+    	<div class="hero">
+
+		    <h1><span><strong>Tamsui</strong></span></h1>
+		    <h1><img src="Big_LOGO.png" style="width: 40vw; height: 20vh;"></h1>
+
+		    <div>
+		        
+		        <a href="#IND2" class="mouse"><p style="color:#FFFF33;"><center>▼</center></p></a>
+		  
+		    </div>
+
+		</div>
+		
+
+    </section>
+
+    <section id="IND2">
+
+        <div id="header_INDEX2"><b>【 淡水歷史介紹 】</div>
+
+        <div class="view" style="display: block;">
+			<div class="attributes" style="margin: 30vh 3.5vw">
+				<div class="attributes_con">
+
+					<div class="attributes_info1">
+						<div class="attributes_pic">
+							<img src="index_02_16.jpg" class="pic">
+						</div>
+						
+						<div class="attributes_title">
+							<p>西元16世紀</p>
+						</div>
+					</div>
+
+					<div class="attributes_info2">
+					
+						<p class="intro">
+
+							西元16世紀西方的海權強國開始逐鹿亞洲，西班牙人最先佔領北臺灣，並建造「聖多明哥城」，即今日的「紅毛城」。
+							1642年荷蘭人驅逐西人，並將淡水作為港口和中國進行貿易。
+							1661年鄭成功驅逐荷人，此後漢人到淡水從事拓墾，「滬尾」也由漁村漸成通商港口。
+							
+						</p>
+
+						<a href="http://news.ltn.com.tw/news/life/breakingnews/1380686" target="_blank">Source</a>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="view" style="display: block;">
+			<div class="attributes" style="margin: 30vh 3vw">
+				<div class="attributes_con">
+
+					<div class="attributes_info1">
+						<div class="attributes_pic">
+							<img src="index_02_19.jpg" class="pic">
+						</div>
+						
+						<div class="attributes_title">
+							<p>西元18世紀</p>
+						</div>
+					</div>
+
+					<div class="attributes_info2">
+					
+						<p class="intro">
+
+							西元1860年天津條約簽訂後，淡水正式開港，成為全臺灣最大的貿易港，進入黃金時代。
+
+							到了日治時代，淡水因河道日漸淤淺，加上日本在基隆建設港口及鐵路，取代了淡水在北臺灣的地位。
+							而淡水憑藉多年的歷史資本，繼續成為北海岸一帶附近鄉鎮的行政及文化中心。
+
+						</p>
+
+						<a href="http://www.tshs.ntpc.gov.tw/xceventsnews/cont?xsmsid=0G252620780150430418&sid=0H121691726578623864" target="_blank">Source</a>
+					</div>
+
+				</div>
+
+			</div>
+				
+		</div>
+
+		<div class="view" style="display: block;">
+			<div class="attributes" style="margin: 30vh 3.5vw">
+				<div class="attributes_con">
+
+					<div class="attributes_info1">
+						<div class="attributes_pic">
+							<img src="index_02_now.jpg" class="pic">
+						</div>
+						
+						<div class="attributes_title">
+							<p>現在</p>
+						</div>
+					</div>
+
+					<div class="attributes_info2">
+					
+						<p class="intro">
+
+							淡水是一個充滿歷史的小鎮，
+
+							商旅船舶的景象雖已不再，但走在淡水街上，一座座洋式、閩式、日式的舊建築，彷彿都在訴說小鎮的悠悠往事，加上古董藝品店林立，更顯其古樸風味。
+
+							現今除了有淡水河、漁人碼頭等著名景點外，加上便利的捷運，更使淡水魅力無人能擋。
+
+						</p>
+
+						<a href="https://zh.wikipedia.org/zh-tw/%E6%B7%A1%E6%B0%B4%E5%8D%80#/media/File:Sunset_of_Tamsui_1.jpg" target="_blank">Source</a>
+
+					</div>
+
+				</div>
+
+			</div>
+				
+		</div>
+
+	</section>
+
+
+    <section id="IND3">
+
+    	<div id="header_INDEX2" style="display: block;"><b>【 淡水景點 & 美食 】</div>
+
+	    <div id="fade" class="black_overlay"></div> 
+	    
+	    <div>
+	        <img id="light1" class="big_img" style="height: 88.5vh;" src ="TamsuiAttractions2.jpg" 
+	            onclick = "document.getElementById('light1').style.display ='none' ;document.getElementById('fade').style.display='none'"/>
+	
+	        <img id="light2" class="big_img" style="height: 88.5vh;" src ="GoldenRiverAttractions.jpg" 
+	            onclick = "document.getElementById('light2').style.display ='none' ;document.getElementById('fade').style.display='none'"/>
+	
+	        <img id="light3" class="big_img" style="height: 88.5vh;" src ="FWharfAttractions2.jpg" 
+	            onclick = "document.getElementById('light3').style.display ='none' ;document.getElementById('fade').style.display='none'"/>
+
+	        <img id="light4" class="big_img" style="height: 88.5vh;" src ="IND_3_F1.jpg" 
+	            onclick = "document.getElementById('light4').style.display ='none' ;document.getElementById('fade').style.display='none'"/>
+
+	        <img id="light5" class="big_img" style="height: 88.5vh;" src ="TamsuiFishFood2.jpg" 
+	            onclick = "document.getElementById('light5').style.display ='none' ;document.getElementById('fade').style.display='none'"/>
+
+	        <img id="light6" class="big_img" style="height: 88.5vh;" src ="TamsuiIronEggFood2.jpg" 
+	            onclick = "document.getElementById('light6').style.display ='none' ;document.getElementById('fade').style.display='none'"/>
+
+	        <img id="light7" class="big_img" style="height: 88.5vh;" src ="IND_6_R1_1.gif" 
+	            onclick = "document.getElementById('light7').style.display ='none' ;document.getElementById('fade').style.display='none'"/>
+
+	        <img id="light8" class="big_img" style="height: 88.5vh;" src ="route1_2_4.jpg" 
+	            onclick = "document.getElementById('light8').style.display ='none' ;document.getElementById('fade').style.display='none'"/>
+
+	        <img id="light9" class="big_img" style="height: 88.5vh;" src ="route1_3_1.jpg" 
+	            onclick = "document.getElementById('light9').style.display ='none' ;document.getElementById('fade').style.display='none'"/>
+
+	        <img id="light10" class="big_img" style="height: 88.5vh;" src ="route1_4_1.jpg" 
+	            onclick = "document.getElementById('light10').style.display ='none' ;document.getElementById('fade').style.display='none'"/>
+
+	        <img id="light11" class="big_img" style="height: 88.5vh;" src ="route2_1_2.jpg" 
+	            onclick = "document.getElementById('light11').style.display ='none' ;document.getElementById('fade').style.display='none'"/>
+
+	        <img id="light12" class="big_img" style="height: 88.5vh;" src ="route2_2_2.jpg" 
+	            onclick = "document.getElementById('light12').style.display ='none' ;document.getElementById('fade').style.display='none'"/>
+
+	        <img id="light13" class="big_img" style="height: 88.5vh;" src ="route2_3_3.jpg" 
+	            onclick = "document.getElementById('light13').style.display ='none' ;document.getElementById('fade').style.display='none'"/>
+
+	    </div>
+
+
+	    <div class="flexslider carousel" style="width: 90vw; height: 80vh;  top: 3.5vh; left: 4vw;">
+	        <ul class="slides">
+	            <li>
+	           
+	                <img src="IND3_1.jpg" class="small_img" 
+	                	onclick="document.getElementById('light1').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+	                	<br>
+	                	《淡水老街》  【營業時間】 全天開放。<br><br>
+	                	從淡水捷運站走出來右轉，就是鼎鼎大名的「淡水老街」。淡水老街分成內外兩側，外側是靠淡水河岸的金色水岸步道，內側是的傳統老街。<br><br>
+	            		這裡還有許多淡水著名的傳統人氣美食，像是阿給、魚酥、古早味現烤蛋糕、阿婆鐵蛋等。<br><br>
+	            		而到了傍晚時分，還能在金色水岸步道欣賞夕陽落入海面的浪漫景色，讓您來到淡水不僅可以享受眾多新鮮美食，還可以欣賞美麗的河岸風景。
+	            		
+	                </p>
+	            </li>
+
+	            <li>
+	            	<img src="IND3_2.jpg" class="small_img" 
+	                	onclick="document.getElementById('light2').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+	            		<br>
+	            		《淡水金色水岸》  【營業時間】 全天開放。<br><br>
+	            		起至關渡大橋，終至淡水河口的漁人碼頭。以河岸遊憩體驗為主題所打造。規劃有林蔭步道、親水河岸、水上舞台、觀潮灣及休憩座椅等設施。<br><br>
+	            		而近年因自行車風氣盛行，金色水岸也有一條經過紅樹林區、漁人碼頭及老街的自行車道，無論是朝陽升起時的活力，還是夕陽西下時的浪漫，皆有不同的炫麗風情。 <br><br>
+	            		來到淡水尋訪繁華老街、堤岸美景、古蹟洋樓，滿眼盡是懷舊情懷，絕對能讓人完全感受到淡水迷人的流金歲月。
+	            		
+	            	</p>
+	            </li>
+
+	            <li>
+	            	<img src="IND3_3.jpg" class="small_img" 
+	                	onclick="document.getElementById('light3').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+
+	            		<br>
+	            		《淡水漁人碼頭》  【營業時間】 全天開放。  【大眾運輸】 搭乘淡水捷運於「淡水站」下車，轉搭紅色26號公車即可抵達。<br><br>
+	            		「淡水漁人碼頭」原是漁港，近年來擴建停車場、碼頭及觀光魚市，結合鄰近景點開發成多功能的觀光休閒漁港。<br><br>
+	            		在傍晚前往漁人碼頭欣賞夕陽美景，晚間白色的船形情人橋在五彩霓虹燈下更顯浪漫。<br><br>
+	            		漁人碼頭更經常舉行小型演唱會與多項藝文活動，假日時也有許多街頭藝人前往表演，為漁人碼頭增添藝術氣息。
+	            	</p>
+
+	            </li>
+	            
+	            <li>
+	            	<img src="IND3_4.jpg" class="small_img" 
+	                	onclick="document.getElementById('light4').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+
+	            		<br>
+	            		《淡水老街-阿給》  【營業時間】 14:00(賣完提早打烊)。<br><br>
+	            		「阿給」是台灣淡水老街鼎鼎有名的小吃，是從日文「油豆腐」的部分發音直譯而來。<br><br>
+	            		作法是將油豆腐中間挖空，填加炒過的冬粉然後浸泡滷汁，再用魚漿封口加以蒸煮，最後淋上甜辣醬或是店家獨門的秘密醬料，讓油豆腐、魚漿、冬粉完美結合。<br><br>
+	            		每天手工現做現蒸現賣，絕不冷凍過夜，因為油豆腐、魚漿不易保存，夏天更容易餿掉。故建議想去淡水老街吃阿給的旅客，中午以前到達比較保險。
+	            	</p>
+
+	            </li>
+	            
+	            <li>
+	            	<img src="IND3_5.jpg" class="small_img" 
+	                	onclick="document.getElementById('light5').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+
+	            		<br>
+	            		《淡水老街-許義魚酥》  【推薦產品】 魚酥、魚丸。  【地址】 新北市淡水區中正路184號。<br><br>
+	            		早年以新鮮魚丸製作為主，後來老闆許義發現只賣魚丸難以維生，另外發想慢慢研發，才有今天的「淡水魚酥」。<br><br>
+	            		魚酥的作法是將黃魚或鯊魚的骨肉碾碎，和上蕃薯粉下鍋油炸至香脆，以塑膠袋封裝，成為攜帶方便的美味零食。<br><br>
+	            		老闆也強調，這裡所販售的產品，包括魚丸、魚酥等食品，都是每天一大早以新鮮魚類為材料親自製作，不僅不帶腥味，還能吃到真正的鮮美海味。
+	            	</p>
+	            </li>
+	            
+	            <li>
+	            	<img src="IND3_6.jpg" class="small_img" 
+	                	onclick="document.getElementById('light6').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+
+	            		<br><br>
+	            		《淡水老街-阿婆鐵蛋》  【地址】 新北市淡水區中正路135-1號。<br><br>
+	            		『鐵蛋』顧名思義就是將雞蛋或者鳥蛋滷得呈現深褐色又小，而且堅硬無比，就像鐵一樣。<br><br>
+	            		由於堅持不添加任何防腐劑，所以阿婆改由真空包裝，更能保持鐵蛋的新鮮度，讓遠地前來遊玩的旅客，能帶回道地的『阿婆鐵蛋』回去給家人一同享用喔。
+	            	</p>
+
+	            </li>
+
+	            <li>
+	            	<img src="route1_1_2.jpg" class="small_img" 
+	                	onclick="document.getElementById('light7').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+
+	            		<br>
+	            		《淡水3D彩繪階梯》  【開放時間】 24小時全天候開放  <br><br>
+	            		台灣各地有很多的彩繪巷弄圖騰，尤其是彩繪著代表性特色圖案最讓人印象深刻，在淡水三級古蹟福佑宮一旁的巷弄內，<br><br>
+	            		彩繪著關渡大橋、淡水夕陽、淡水媽祖及和淡水有關的彩繪畫作。當站在彩繪階梯由上往下拍攝時，會覺得踏在會流動的水流瀑布上，相當立體。<br><br>
+
+	            		【地址】 新北市淡水區中正路200號(淡水福佑宮旁的巷子)  【交通方式】 淡水捷運站→淡水老街→淡水福佑宮
+	            	</p>
+	            </li>
+
+	            <li>
+	            	<img src="route1_2_1.jpg" class="small_img" 
+	                	onclick="document.getElementById('light8').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+
+	            		<br>
+	            		《淡水雲門劇場》   【開放時間】 週二到週五 10:00-17:00<br><br>
+	            		位於淡水高爾夫球場與滬尾砲台之間的雲門劇場，遠眺觀音山與淡水河出海口，淡綠玻璃幃幕的建築映照週遭高樹，融入恬靜的綠色地景宛如一座大樹屋。<br><br>
+	            		享譽國際的雕術大師朱銘，為了慶賀雲門劇場的開幕，展示了許多座白彩人間系列的作品(展覽自2018/01/01至2018/12/23)，讓劇場外增加趣味與藝術感。<br><br>
+
+	            		【地址】 新北市淡水區中正路一段6巷36號  【交通方式】 淡水捷運站2號出口→836公車/紅26公車→滬尾砲台(雲門劇場)→雲門劇場
+
+	            	</p>
+	            </li>
+
+	            <li>
+	            	<img src="route1_2_3.jpg" class="small_img" 
+	                	onclick="document.getElementById('light8').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+
+	            		<br>
+	            		《星巴克淡水雲門門市》  【營業時間】 週日至週四10:00-18:00／週五、週六10:00-19:30  【地址】 新北新淡水區中正路一段6巷32-1號(雲門劇場旁)<br><br><br>
+
+	            		在雲門劇場旁還有一間整體建物採透明玻璃屋設計，兼具節能與自然採光的綠色建築「星巴克雲門門市」。<br><br>
+	            		前方廣場上有一片綠意盎然的荷花池，池中的雕像是雕塑家林健成著作的青銅雕像「旋的冥想」，紀念雲門2創團藝術總監羅曼菲的舞影，也成了這最具代表的象徵地標。<br><br>
+	            	</p>
+	            </li>
+
+	            <li>
+	            	<img src="route1_3_2.jpg" class="small_img" 
+	                	onclick="document.getElementById('light9').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+
+	            		<br>
+	            		《淡水沙崙海灘》  【開放時間】 24小時全天候開放  【地址】 新北市淡水區淡海路302號  【交通方式】 淡水捷運站2號→857公車→沙崙里→沙崙海灘<br><br>
+	            		在漁人碼頭的不遠處，有座沙崙海灘，目前已關閉13年了，但那美麗的景色，自然成為捕捉幸福浪漫的好場地，因此許多新人到此拍攝婚紗。<br><br>
+	            		如果幸運的話，還可以看到馬場裡的馬悠哉的散步在這金色海灘上。<br><br>
+	            		雖然在這美麗的景色下不能下海玩水，不過在耀眼炙熱的陽光下享受海景、拍照玩沙，等待夕陽落下海平面，也是一件值得開心的事！
+
+	            	</p>
+
+	            </li>
+
+	            <li>
+	            	<img src="route1_4_3.jpg" class="small_img" 
+	                	onclick="document.getElementById('light10').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+
+	            		<br>
+	            		《淡江大學-守謙國際會議中心》  【開放時間】 上班日07:40-20:50；其他:彈性開放<br><br>
+	            		守謙國際會議中心位於淡江大學，是一座首次以校友捐款所建造的大樓。守謙會議中心共有五樓，全棟外牆以清水模為建材興建而成。<br><br>
+	            		在會議中心每層樓的外圍，有開放階梯能讓民眾由會議中心俯瞰淡水河，所以淡江大學的師生每到黃昏就會到此觀看夕陽，那種美景真是美不勝收。<br><br>
+	            	
+	            		【地址】 新北市淡水區英專路151號   【交通方式】 淡水捷運站2號→紅27/紅28→淡江大學
+
+	            	</p>
+	            </li>
+
+	            <li>
+	            	<img src="route2_1_1.jpg" class="small_img" 
+	                	onclick="document.getElementById('light11').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+
+	            		<br>
+	            		《十三行博物館》  【開放時間】 週一至週五 09:30－17:00  【地址】 新北市八里區博物館路200號<br><br>
+	            		在博物館裡設立了八里從古至今的四個時期，從「史前時期」、「荷西時期」、「清初漢人出入墾時期」、「八里坌繁榮時期」，<br><br>
+	            		將場景營造成生活情景劇場，利用音效、燈光及旁白，帶領觀眾認識十三行人一天的生活。為了能更理解考古工作，透過遊戲的方式來挖古物或是拼裝古物。<br><br>
+	            		
+	            		【交通方式】 捷運淡水站1號出口→渡船→紅13公車→十三行博物館 / 捷運關渡站1號出口→紅13公車→十三行博物館
+
+	            	</p>
+
+	            </li>
+
+	            <li>
+	            	<img src="route2_2_1.jpg" class="small_img" 
+	                	onclick="document.getElementById('light12').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+
+	            		<br>
+	            		《八里文化公園》  【開放時間】 24小時全天候開放  【地址】 新北市八里區博物館路與忠孝路交叉口<br><br>
+	            		八里文化公園位在新北市八里區，前身為十三行文化公園，占地遼闊，有大片草皮是孩童嬉戲的好地方，<br><br>
+	            		當米飛兔60週年特展落幕後，將部份米飛公仔贈與新北市政府，依主題性將其分為11區，如米飛框區、方框廊道區、沙坑區等，讓整個園區更添活潑氣息。<br><br>
+	            		
+	            		【交通方式】 捷運淡水站1號出口→渡船→紅13公車→十三行公園 / 捷運關渡站1號出口→紅13公車→十三行公園
+	            	</p>
+
+	            </li>
+
+	            <li>
+	            	<img src="route2_3_1.jpg" class="small_img" 
+	                	onclick="document.getElementById('light13').style.display ='block';document.getElementById('fade').style.display='block'" 
+	                		style="width: 70vw; height: 64vh;  margin-top: 15vh; margin-left: 10vw;"/>
+	                <p style="background-image: url(white.jpg); width: 89.5vw; height: 15.2vh;  top: 5vh; position: absolute; color: black;">
+
+	            		<br>
+	            		《觀音山步道》  【開放時間】 24小時全天候開放  【地址】 新北市五股區觀音山  【交通方式】 捷運淡水站1號出口→渡船→觀音山假日免費接駁公車→觀音山遊客中心<br><br>
+	            		「觀音山」有六條登山步道：「牛港稜登山步道」、 「福隆山登山步道」、「硬漢嶺登山步道」、 「楓櫃斗湖登山步道」、 「尖山步道」、 「牛寮埔登山步道」。<br><br>
+	            		每條步道的沿途風景、長度、攀爬難易度均不相同，而我們推薦「硬漢嶺登山步道」，稱「硬漢嶺」是因昔日此處是憲兵訓練用地，因此只要走一遭就算升格為硬漢。<br><br>
+	            		沿路以階梯居多，但想到硬漢嶺觀景台的美景就一切都值得，在觀景台能以超廣角鳥瞰"淡水河畔"、"台北港"、"關渡大橋"，整片的美景相當壯觀。
+	            	</p>
+
+	            </li>
+	            
+	        </ul>
+
+	    </div>
+
+    </section>
+
+    <section id="IND4">
+
+        <section><div id="header_INDEX2" style="display: block;"><b>【 推薦景點 之 路線規劃 】</div></section>
+
+        <section>
+        	
+        	<img src="route2.png" 
+
+        		onmouseover="     this.src=' route2_2.png ';  " 
+
+        		onmouseout="      this.src=' route2.png '; "   
+
+        		style=" width:30vw; height:57vh; margin-left: 1.5vw; margin-top: 0vh;">
+
+
+        	<img src="route1.png" 
+
+        		onmouseover="     this.src=' route1_2.png ';  " 
+
+        		onmouseout="      this.src=' route1.png '; "   
+
+        		style=" width:48vw; height:60vh; margin-top: 22vh;">
+
+        </section> 
+     
+    </section>
+    
+
+    <section id="IND5">
+
+    	<section><div id="header_INDEX2" style="display: block;"><b>【 推薦路線一 】</div></section>
+
+        <section stype="display: inline-block;">
+
+        	<div>
+	        	<img src="INDEX5_11.png" style="height: 130vh; float: left; margin-left: 10vw; margin-top: 30vh;">
+	        </div>
+
+	    </section>
+
+        <section stype="display: inline-block;">
+
+        	<div class="storyCon">
+		        <a href="index_4.html">
+		            <div class="stConArea">
+
+		            	<img id="L" src="IND_5_R2_1.gif"
+		                	alt style="opacity: 1; width: 28vw; height: 40vh; margin-left: 10vw; margin-top: 18vh; float: left;">
+		                
+
+						<a class="flower-show">
+
+		                	<span style="width: 39vw; height: 32vh;	padding: 5px; margin-left: -34.5vw; margin-top: 30.5vh; float: left;">
+
+		                		<p alt style="opacity: 1; width: 39vw; height: 40vh; margin-left: -1.5vw; margin-top: 2vh; float: left; color: white;">
+
+									簡介：<br>
+									
+									在博物館裡設立了八里從古至今的四個時期，從「史前時期」、「荷西時期」、「清初漢人出入墾時期」、「八里坌繁榮時期」，將場景營造成生活情景劇場，利用音效、燈光及旁白，帶領觀眾認識十三行人一天的生活。為了能更理解考古工作，透過遊戲的方式來挖古物或是拼裝古物。
+								</p>
+							</span>
+
+
+		                	<div class="stInf" 
+			                	style="background-color: rgb(255,255,255); transition: all 0.3s ease 0s; width: 40vw; height: 40vh; margin-left: -32.5vw; margin-top: 18vh; float: left;">
+			                    <h5>First.&#160; 【 十三行博物館 】</h5>
+				                <p align=left style="margin-top: 3vh; float: left;">
+				                  	
+									★ 地址：新北市八里區博物館路200號<br>
+									★ 開放時間：週一至週五 09:30－17:00<br>
+									★ 交通方式：<br>
+									&emsp;&ensp;捷運淡水1號出口→渡船→紅13公車→十三行博物館<br>
+									&emsp;&ensp;捷運關渡1號出口→紅13公車→十三行博物館<br><br>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									《點我看更多》
+								</p>
+			                </div>
+
+		                </a>
+		                               	
+		            </div>
+		        </a>
+
+		        <a href="index_4.html">
+		            <div class="stConArea">
+
+		                <img src="IND_5_R2_2.gif" alt style="opacity: 1; width: 40vw; height: 42vh; margin-left: -25vw; margin-top: -2vh;">
+
+						<a class="flower-show">
+
+							<span>
+
+								<p alt style="opacity: 1; width: 39vw; height: 40vh; margin-left: -2vw; margin-top: 0vh; float: left; color: white;">
+
+									簡介：<br>
+									
+									八里文化公園位在新北市八里區，前身為十三行文化公園，占地遼闊，有大片草皮是孩童嬉戲的好地方，園區可與左岸單車道連成一氣，並無多於屏障物，因此吸引不少單車愛好者前往。當米飛兔 60 週年特展落幕後，將部份米飛公仔贈與新北市政府，讓荷蘭國寶級的人物米飛在八里文化公園與大家見面。在公園的各個角落都可以看的米飛的身影，更依主題性將其分為11區，如米飛框區、方框廊道區、沙坑區等，讓整個園區更添活潑氣息。
+								</p>
+							</span>
+
+			                <div class="stInf" 
+			                	style="background-color: rgb(255,255,255); transition: all 0.3s ease 0s; width: 40vw; height: 42vh; margin-left: -8vw; margin-top: -2vh;">
+
+			                	<h5>Second.&#160; 【 八里文化公園 】</h5>
+			                    <p align=left style="margin-top: 5vh;">
+			                    	
+									★ 地址：新北市八里區博物館路與忠孝路交叉口<br>
+									★ 開放時間：24小時全天候開放<br>
+									★ 交通方式：<br>
+									&emsp;&ensp;捷運淡水1號出口→渡船→紅13公車→十三行公園<br>
+									&emsp;&ensp;捷運關渡1號出口→紅13公車→十三行公園<br><br>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;《點我看更多》
+
+								</p>
+			                    
+			                </div>
+			            </a>
+		            </div>
+		        </a>
+
+		        <a href="index_4.html">
+		            <div class="stConArea">
+
+		                <img id="L" src="IND_5_R2_3.gif" 
+		                	alt style="opacity: 1; width: 30vw; height: 40vh; margin-left: 10vw; margin-top: -24vh;">
+
+
+		                <a class="flower-show">
+
+		                	<span style="width: 42vw; height: 33vh;	padding: 5px; margin-left: -34.5vw; margin-top: -12.3vh;">
+
+		                		<p alt style="opacity: 1; width: 42vw; height: 40vh; margin-left: -1.5vw; margin-top: 0vh; float: left; color: white;">
+
+									
+									「觀音山」有六條登山步道：「牛港稜登山步道」、 「福隆山登山步道」、「硬漢嶺登山步道」、 「楓櫃斗湖登山步道」、 「尖山步道」、 「牛寮埔登山步道」。每條步道的沿途風景、長度、攀爬難易度均不相同，顧可以針對遊客自己的喜好來選擇。而我們推薦「硬漢嶺登山步道」，之所以叫「硬漢嶺」是因為昔日此處是憲兵訓練用地而得名，因此只要走一遭就算升格為硬漢。沿路以階梯居多，但想到硬漢嶺觀景台的美景就一切都值得，在觀景台能以超廣角鳥瞰”淡水河畔”、”台北港”、”關渡大橋”，整片的美景相當壯觀。
+								</p>
+							</span>
+
+
+		                	<div class="stInf" 
+			                	style="background-color: rgb(255,255,255); transition: all 0.3s ease 0s; width: 40vw; height: 40vh; margin-left: -32.5vw; margin-top: -24vh;">
+			                    <h5>Third.&#160; 【 觀音山 】</h5>
+			                    <p align=left style="margin-top: 5vh;">
+			                    	
+									★ 地址：新北市五股區觀音山<br>
+									★ 開放時間：24小時全天候開放<br>
+									★ 交通方式：捷運淡水站1號出口→渡船→觀音山假日免費接駁公車→觀音山遊客中心<br><br>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									《點我看更多》
+								</p>
+			                </div>
+
+		                </a>
+
+		            </div>
+		        </a>
+
+		    </div>
+		</section>
+
+    </section>
+
+    <section id="IND6">
+
+        <section><div id="header_INDEX2" style="display: block;"><b>【 推薦路線二 】</div></section>
+
+        <section stype="display: inline-block;">
+
+        	<div>
+	        	<img src="INDEX6_1.png" style="height: 200vh; float: left; margin-left: 10vw; margin-top: 30vh;">
+	        </div>
+
+	    </section>
+
+        <section stype="display: inline-block;">
+
+        	<div class="storyCon">
+		        <a href="index_4.html" >
+		            <div class="stConArea">
+
+		            	<img id="L" src="IND_6_R1_1.gif"
+		                	alt style="opacity: 1; width: 33vw; height: 41vh; margin-left: 16vw; margin-top: 20.5vh;">
+		                
+						<a class="flower-show">
+
+		                	<span style="width: 39vw; height: 32.5vh;	padding: 5px; margin-left: -34.5vw; margin-top: 30.5vh; background-color: blue;">
+
+		                		<p alt style="opacity: 1; width: 39vw; height: 40vh; margin-left: -1.5vw; margin-top: 2vh; float: left; color: white;">
+
+									簡介：<br>
+									
+									台灣各地區不乏有很多的彩繪巷弄圖騰吸引人群，尤其是彩繪著代表性特色圖案最讓人印象深刻，在淡水三級古蹟福佑宮一旁的巷弄內，彩繪著關渡大橋、淡水夕陽、淡水媽祖及和淡水有關的彩繪畫作。這擁有台灣味的圖案，並不是一般的彩繪，當站在彩繪階梯由上往下拍攝時，會覺得踏在會流動的水流瀑布上，相當立體。
+								</p>
+							</span>
+
+
+		                	<div class="stInf" 
+			                	style="background-color: rgb(255,255,255); transition: all 0.3s ease 0s; width: 40vw; height: 40.5vh; margin-left: -32.5vw; margin-top: 18vh;">
+			                    <h5>First.&#160; 【 淡水3D彩繪階梯 】</h5>
+			                    <p align=left style="margin-top: 5vh;">
+			                    	
+									★ 地址：新北市淡水區中正路200號<br>&emsp;&ensp;&emsp;&emsp;&emsp;(淡水福佑宮旁的巷子)<br>
+									★ 開放時間：24小時全天候開放<br>
+									★ 交通方式：淡水捷運站→淡水老街→淡水福佑宮<br><br>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									《點我看更多》
+								</p>
+
+			                </div>
+
+		                </a>
+		            </div>
+		        </a>
+
+		        <a href="index_4.html">
+		            <div class="stConArea">
+
+		            	<img src="IND_6_R1_2.gif" alt style="opacity: 1; width: 40vw; height: 41vh; margin-left: -26.25vw; margin-top: 3vh;">
+
+						<a class="flower-show">
+
+							<span style="background-color: blue; width: 41vw; height: 43.5vh; margin-left: -7vw; margin-top: 3.5vh;">
+
+								<p alt style="opacity: 1; width: 42vw; height: 40vh; margin-left: -3vw; margin-top: 0vh; float: left; color: white;">
+
+									簡介：<br>
+									
+									位於淡水高爾夫球場與滬尾砲台之間的雲門劇場，遠眺觀音山與淡水河出海口，淡綠玻璃幃幕的建築映照週遭高樹，融入恬靜的綠色地景宛如一座大樹屋。享譽國際的雕術大師朱銘，為了慶賀雲門劇場的開幕，展示了許多座白彩人間系列的作品(展覽自2018/01/01至2018/12/23)，充滿生活感的雕像陳列在戶外空間，讓劇場外增加趣味與藝術感。<br>
+									在雲門劇場旁還有一間整體建物採透明玻璃屋設計，兼具節能與自然採光的綠色建築「星巴克雲門門市」。前方廣場上有一片綠意盎然的荷花池，池中的雕像是雕塑家林健成著作的青銅雕像「旋的冥想」，用以紀念雲門2創團藝術總監羅曼菲的舞影，也成了這裡最具代表的象徵地標。
+
+								</p>
+							</span>
+
+			                <div class="stInf" 
+			                	style="background-color: rgb(255,255,255); transition: all 0.3s ease 0s; width: 40vw; height: 42.5vh; margin-left: -8vw; margin-top: -1.5vh;">
+
+			                	<h5>Second.&#160; 【 淡水雲門劇場 】</h5>
+			                    <p align=left style="margin-top: 5vh;">
+			                    	
+									★ 地址：新北市淡水區中正路一段6巷36號<br>
+									★ 開放時間：週二到週五 10:00-17:00<br>
+									★ 交通方式：淡水捷運2號出口→836公車/紅26公車→滬尾砲台(雲門劇場)→雲門劇場<br><br>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									《點我看更多》
+								</p>
+			                    
+			                </div>
+			            </a>
+
+		            </div>
+		        </a>
+
+		        <a href="index_4.html">
+		            <div class="stConArea">
+
+		            	<img id="L" src="IND_6_R1_3.gif"
+		                	alt style="opacity: 1; width: 33vw; height: 41.5vh; margin-left: 16vw; margin-top: -13vh;">
+		                
+						<a class="flower-show">
+
+		                	<span style="width: 39vw; height: 32.5vh;	padding: 5px; margin-left: -34.5vw; margin-top: -2vh; background-color: blue;">
+
+		                		<p alt style="opacity: 1; width: 39vw; height: 40vh; margin-left: -1.5vw; margin-top: 2vh; float: left; color: white;">
+
+									簡介：<br>
+									
+									在漁人碼頭的不遠處，有座沙崙海灘，目前沙海灘已關閉13年了，但那美麗的景色，自然成為捕捉幸福浪漫的好場地，因此許多新人到此拍攝婚紗。如果幸運的話，還可以看到馬場裡的馬悠哉的散步在這金色海灘上。雖然在這美麗的景色下不能下海玩水，不過在耀眼炙熱的陽光下享受海景、拍照玩沙，等待夕陽落下海平面，也是一件值得開心的事！
+								</p>
+							</span>
+
+
+		                	<div class="stInf" 
+			                	style="background-color: rgb(255,255,255); transition: all 0.3s ease 0s; width: 40vw; height: 40.5vh; margin-left: -32.5vw; margin-top: -15vh;">
+			                    <h5>Third.&#160; 【 淡水沙崙海灘 】</h5>
+			                    <p align=left style="margin-top: 5vh;">
+			                    	
+									★ 地址：新北市淡水區淡海路302號<br>
+									★ 開放時間：24小時全天候開放<br>
+									★ 交通方式：<br>&emsp;&ensp;淡水捷運2號出口→857公車→沙崙里→海灘<br><br>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									《點我看更多》
+								</p>
+
+			                </div>
+
+		                </a>
+		                    
+		            </div>
+		        </a>
+
+		        <a href="index_4.html">
+		            <div class="stConArea">
+
+		            	<img src="IND_6_R1_4.gif" alt style="opacity: 1; width: 38vw; height: 42vh; margin-left: -20vw; margin-top: -31vh;">
+
+						<a class="flower-show">
+
+							<span style="background-color: blue; width: 38.5vw; height: 31vh; margin-left: -5vw; margin-top: -17.5vh;">
+
+								<p alt style="opacity: 1; width: 40vw; height: 40vh; margin-left: -2.5vw; margin-top: 3vh; float: left; color: white;">
+
+									簡介：<br>
+									
+									守謙國際會議中心位於淡江大學，是一座首次以校友捐款所建造的大樓。守謙會議中心共有五樓，全棟外牆以清水模為建材興建而成。在會議中心每層樓的外圍，有開放階梯能讓民眾由會議中心俯瞰淡水河，而淡江大學的師生每到黃昏就會到此觀看夕陽，那種美景真是美不勝收。
+
+								</p>
+							</span>
+
+			                <div class="stInf" 
+			                	style="background-color: rgb(255,255,255); transition: all 0.3s ease 0s; width: 40vw; height: 42vh; margin-left: -8vw; margin-top: -35vh;">
+
+			                	<h5>Fourth.  <br> 【淡江大學守謙國際會議中心】</h5>
+			                    <p align=left style="margin-top: 5vh;">
+			                    	
+									★ 地址：地址:新北市淡水區英專路151號<br>
+									★ 開放時間：上班日07:40-20:50；其他:彈性開放<br>
+									★ 交通方式：淡水捷運2號出口→紅27/紅28→淡江大學<br><br>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									《點我看更多》
+								</p>
+			                    
+			                </div>
+			            </a>
+
+		            </div>
+		        </a>
+
+		    </div>
+		</section>
+
+    </section>
+
+    <section id="IND7">
+
+        <div class="flexslider" style="width:90vw; height:80vh; margin: 3vh auto">
+			<ul class="slides" stype="display:inline;">
+				<li>
+					<div class="team_intro" stype="display:inline;">
+						<img src="me_2.jpg">
+					
+						<p style="color:white">
+							<span>
+								《 淡水雙姬 》 組長：何筱珊
+								<br>
+								就讀學校：淡江大學 資訊工程學系
+								<br>
+								擔任角色：程式設計、排版設計
+							</span>
+						</p>
+					</div>
+					<div class="white"><img src="white.png" style="max-width: 5vw;max-height: 10vh;" stype="display:inline; "></div>
+
+					<div class="team_review" stype="display:inline;">
+					
+						<p>
+							在淡江的這三年，我發現淡水有許多非常有趣且漂亮的地方，
+							<br>
+							但是每次看著觀光客們只為了淡水老街而來，就覺得非常之可惜。
+							<br><br>
+							淡水不僅擁有山形像一座觀音斜臥淡水河畔的觀音山，
+							<br>
+							還有黃昏時分落日染紅淡水河面的美景，
+							<br>
+							因此我們設計這個「群山淡景」的網頁，
+							<br>
+							其中的「山」代表觀音山；而「淡」則代表淡水河，
+							<br>
+							目的就是希望能透過這個網頁將淡水更多不同的面貌呈現給大家，
+							<br>
+							讓大家對淡水的印象不會只侷限在老街、漁人碼頭等著名景點。
+							<br><br>
+							另外大家也可以透過我們創建的臉書社團與我們討論或分享更多值得前往的景點，
+							<br>
+							藉由互動的方式讓我們一起窺探淡水的美。
+						</p>
+					</div>
+
+					
+				</li>
+
+				<li>
+					<div class="team_intro"">
+						<img src="pig_2.jpg">
+					
+						<p style="color: white">
+							<span>
+								《 淡水雙姬 》 組員：盧盈君
+								<br>
+								就讀學校：淡江大學 資訊工程學系
+								<br>
+								擔任角色：製圖、排版設計、照片收集
+							</span>
+						</p>
+					</div>
+					<div class="white"><img src="white.png" style="max-width: １0vw;max-height: 10vh;"></div>
+
+					<div class="team_review" stype="display:inline;">
+					
+						<p>
+
+							在還沒來淡水讀書時，
+							<br>
+							對淡水唯一的印象就是觀光客必去的淡水老街以及歷史悠久的名勝古蹟，
+							<br>
+							直到某天從校園中的高樓遠眺觀音山及淡水河口，
+							<br>
+							才發現淡水老街僅僅是淡水的小小地標，
+							<br>
+							背後還有許多不為人知的景點等著我們去探索。
+							<br><br>
+							因此在空堂之餘，就會跟朋友到處走走，
+							<br>
+							不知不覺三年就過去了，一轉眼才發現快把淡水八里玩遍了，
+							<br>
+							而我們也不藏私的分享出來，希望透過我們的作品，
+							<br>
+							可以讓想來遊玩淡水的旅客，
+							<br>
+							去走走我們所介紹的私密景點。
+							<br><br>
+						</p>
+					</div>
+
+				</li>
+			</ul>
+		</div>
+    </section>
+
+    <footer id="FOOTER">
+
+    	<img src="LOGO_Main_3.jpg" alt="footer" data-sr="enter bottom, move 5px, over 1.2s, wait .2s" style="max-width: 22.5vw;max-height: 20vh; margin-top: 5vh;" />
+
+    	&ensp; &ensp; &ensp; 
+    	
+    	<img src="logo.png" alt="footer" data-sr="enter bottom, move 5px, over 1.2s, wait .2s" style="max-width: 22.5vw;max-height: 20vh; margin-top: 0vh;" />
+
+    	<br>
+
+   		<a href="https://www.facebook.com/%E7%BE%A4%E5%B1%B1%E6%B7%A1%E6%99%AF-917323278469280/"><img src="footer.png" style="max-width: 15vw;max-height: 10vh; margin-top: 4vh;"></a>
+     
+        <ul class="fooLinkss" data-sr="over 1.2s, wait .8s" style="margin-top: 3vh;">
+        	<li>
+        		<a href="#IND2" style="font-family: 標楷體;">【 淡水歷史 】</a>
+            	<a href="#IND3" style="font-family: 標楷體;">【 景點&美食 】</a>
+            	<a href="#IND4" style="font-family: 標楷體;">【 推薦路線 】</a>
+            	<a href="#IND7" style="font-family: 標楷體;">【 淡水雙姬 】</a>
+            </li>
+        </ul>
+        <p class="f12" data-sr="enter bottom, move 5px, over 1.2s, wait .6s" style="margin-top: 4vh;">
+        	<span>© Tamsui Beauties. All Rights Reserved. Designed by S.Shan.</span>
+        </p>
+        <br>
+	</footer>  
+
+    <script>
+        var divHeight = $('.aa').height();
+        var inHeight = $('.in').height();
+        $('.in').css('margin-top', (divHeight-inHeight)/2);
+    </script>
+
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+
+        function scrollFunction() {
+            if (document.body.scrollTop >= 150 || document.documentElement.scrollTop >= 150) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        $(window).scroll(function() {
+
+		    if ($(window).scrollTop() > 100) {
+		        $('.main_h').addClass('sticky');
+		    } else {
+		        $('.main_h').removeClass('sticky');
+		    }
+		});
+
+		// Mobile Navigation
+		$('.mobile-toggle').click(function() {
+		    if ($('.main_h').hasClass('open-nav')) {
+		        $('.main_h').removeClass('open-nav');
+		    } else {
+		        $('.main_h').addClass('open-nav');
+		    }
+		});
+
+		$('.main_h li a').click(function() {
+		    if ($('.main_h').hasClass('open-nav')) {
+		        $('.navigation').removeClass('open-nav');
+		        $('.main_h').removeClass('open-nav');
+		    }
+		});
+
+		// navigation scroll lijepo radi materem
+		$('nav a').click(function(event) {
+		    var id = $(this).attr("href");
+		    var offset = 70;
+		    var target = $(id).offset().top - offset;
+		    $('html, body').animate({
+		        scrollTop: target
+		    }, 500);
+		    event.preventDefault();
+		});
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+  <!-- Syntax Highlighter -->
+  	<link href="css/shCore.css" rel="stylesheet" type="text/css" />
+  	<link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+  <!-- Demo CSS -->
+	<link rel="stylesheet" href="css/demo.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="../flexslider.css" type="text/css" media="screen" />
+
+	<!-- Modernizr -->
+  	<script src="js/modernizr.js"></script>
+
+  	<link rel="stylesheet" type="text/css" href="css/flexslider.css" />
+
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+
+	<script type="text/javascript">
+		$(function() {
+			$(".flexslider").flexslider({
+				slideshowSpeed: 4000, //展示时间间隔ms
+				animationSpeed: 400, //滚动时间ms
+				touch: true //是否支持触屏滑动
+			});
+		});	
+	</script>
+
+    <!-- index03 _ small img to big img -->
+
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/flexslider.css" />
+    <script type="text/javascript">
+        $(function() {
+            $(".flexslider").flexslider({
+                animation: "slide",
+                animationLoop: false,
+                //pausePlay: true
+            });
+        }); 
+    </script>
+
+    <!-- index03 _ small img to big img -->
+
+</body>
+</html>
